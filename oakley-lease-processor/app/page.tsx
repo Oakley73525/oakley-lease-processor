@@ -1,8 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import DocumentUpload from '../components/DocumentUpload'
-import ProjectManagement from '../components/ProjectManagement'
 import { FileText, Upload, Settings, BarChart3, Folder } from 'lucide-react'
 
 interface Project {
@@ -51,12 +49,11 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-4">
-              <div className="bg-oakley-blue p-2 rounded-lg">
+              <div className="bg-blue-600 p-2 rounded-lg">
                 <FileText className="h-8 w-8 text-white" />
               </div>
               <div>
@@ -74,7 +71,6 @@ export default function Dashboard() {
         </div>
       </header>
 
-      {/* Navigation */}
       <nav className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex space-x-8">
@@ -89,7 +85,7 @@ export default function Dashboard() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm ${
                   activeTab === tab.id
-                    ? 'border-oakley-blue text-oakley-blue'
+                    ? 'border-blue-600 text-blue-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
               >
@@ -101,7 +97,6 @@ export default function Dashboard() {
         </div>
       </nav>
 
-      {/* Main Content */}
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         {activeTab === 'dashboard' && (
           <div className="px-4 py-6 sm:px-0">
@@ -172,8 +167,27 @@ export default function Dashboard() {
           </div>
         )}
 
-        {activeTab === 'upload' && <DocumentUpload />}
-        {activeTab === 'projects' && <ProjectManagement />}
+        {activeTab === 'upload' && (
+          <div className="px-4 py-6 sm:px-0">
+            <div className="bg-white shadow rounded-lg p-6">
+              <h3 className="text-lg font-medium text-gray-900 mb-4">Document Upload</h3>
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                <Upload className="mx-auto h-12 w-12 text-gray-400" />
+                <h3 className="mt-2 text-sm font-medium text-gray-900">Upload lease documents</h3>
+                <p className="mt-1 text-sm text-gray-500">Drag and drop files here or click to browse</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'projects' && (
+          <div className="px-4 py-6 sm:px-0">
+            <div className="bg-white shadow rounded-lg p-6">
+              <h3 className="text-lg font-medium text-gray-900 mb-4">Project Management</h3>
+              <p className="text-gray-600">Project management interface coming soon...</p>
+            </div>
+          </div>
+        )}
         
         {activeTab === 'settings' && (
           <div className="px-4 py-6 sm:px-0">
